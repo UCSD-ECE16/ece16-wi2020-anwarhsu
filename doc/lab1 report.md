@@ -10,7 +10,7 @@ Date: 01/06/2020
 
 > A. It takes 1.5 sec to make a cycle(period) go from HIGH to LOW to HIGH. If we take the inverse of the period we get the frequency, which will give us 2/3 hz or .66667 hz. 
 >
->![Image of challenge](videos/led_blink.gif)
+>![Image of challenge](videos/LED_blink.gif)
 
 ### Tutorial GIT Basics:
 
