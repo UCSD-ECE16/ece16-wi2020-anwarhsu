@@ -64,6 +64,9 @@ We had to create a digital siganl and conver that to a analog singal using the i
 
 > A. We cant use digitalWrite becuase it would only give us a digital output of either high or low. We are using LedcWrite because t uses the idea of PWM to acheive a analog signal given an digital siginal. This is acheived by the frquency of the siginal and duty cycles needed. In out code we are running 
 
+> you can visually see the different stages of buzz power as it goes from high to medium to none.  
+>![Image of light](videos2/lab2_c1.gif)
+
 ### Challenge 2: Gesture Detection
 We had to use an accelometer that would be use to dectet weather the user has tap on the accelerometer. We then add time and display this time onto an OLED display. 
 
@@ -74,7 +77,7 @@ We had to use an accelometer that would be use to dectet weather the user has ta
 > Q. Provide a screenshot of a plot showing 5 taps and the threshold used. 
 
 > A. The threshold I use was 2220 for the peak and 2050 for the lower peaks. I represented the red line as the high peak and yellow as the low peak. (As shown below)
->![Image of light](images2/five_taps.JPG)
+>![Image of light](images2/five_taps.jpg)
 
 > Q. Include a video of you tapping on the accelerometer and the OLED counting each time. 
 
@@ -110,7 +113,7 @@ We have to implement a state machine for our watch that would count time if you 
 > Q. How many states do you need? Describe in words what each state does and it’s transition logic. Draw the state machine
 
 > A. I used 4 states and there are describe below
-> ![Image of light](images2/state.JPG)
+> ![Image of light](images2/state.jpg)
 
 ### Challenge 6: Gesture Controlled Watch 
 We have to code the state diagram as stated from teh challenge 6
