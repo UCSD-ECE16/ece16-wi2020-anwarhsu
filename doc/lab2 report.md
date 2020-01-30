@@ -19,9 +19,9 @@ Date: 01/06/2020
 > A. For light the peaks is around 2220, for medium its around 2230, for hard its around 2250. The baseline for the the accelerometer is at rest is 2190. If we subtract the peak- baseline we get half the amplitude which gives us the average value of each ta.p. For light its 2220-2190 = 30. For medium its 2230 - 2190 = 40. For hard its 2250 - 2190 = 50
 
 
->Image of Light:![Image of light](images2/light.jpg)
->Image of Medium: ![Image of medium](images2/medium.jpg)
->Image of Hard ![Image of hard](images2/hard.jpg)
+>Image of Light:![Image of light](images2/light.JPG)
+>Image of Medium: ![Image of medium](images2/medium.JPG)
+>Image of Hard ![Image of hard](images2/hard.JPG)
 
 
 ### Tutorial Pulse Width Modulation:
@@ -74,7 +74,7 @@ We had to use an accelometer that would be use to dectet weather the user has ta
 > Q. Provide a screenshot of a plot showing 5 taps and the threshold used. 
 
 > A. The threshold I use was 2220 for the peak and 2050 for the lower peaks. I represented the red line as the high peak and yellow as the low peak. (As shown below)
->![Image of light](images2/five_taps.jpg)
+>![Image of light](images2/five_taps.JPG)
 
 > Q. Include a video of you tapping on the accelerometer and the OLED counting each time. 
 
@@ -110,7 +110,7 @@ We have to implement a state machine for our watch that would count time if you 
 > Q. How many states do you need? Describe in words what each state does and it’s transition logic. Draw the state machine
 
 > A. I used 4 states and there are describe below
-> ![Image of light](images2/state.jpg)
+> ![Image of light](images2/state.JPG)
 
 ### Challenge 6: Gesture Controlled Watch 
 We have to code the state diagram as stated from teh challenge 6
