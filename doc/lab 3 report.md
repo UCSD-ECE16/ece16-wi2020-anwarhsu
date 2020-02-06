@@ -97,3 +97,50 @@ arange:
 >  
 > OUTPUT:
 > ![Image of arrange_output](images3/arrange_output.JPG)
+
+linspace:
+> Q. Make an array call linspace_array using linspace that goes from 0 to 100 with 49 steps. 
+
+> A.
+> 
+> CODE:
+> ![Image of linespace](images3/linespace.JPG)
+>  
+> OUTPUT:
+> ![Image of linespace_output](images3/linespace_output.JPG)
+
+> Q. How does linspace and arange differ? When might you use one over the other?
+
+> A. The linepsace will increment based on how many step sizes you want. It will evenly divide the start and end values by how many step sizes and even use floating point accuracy. While if we use arrange. We are in control by how much we increment each step from start to finish. The benfit to using the linspace would if you don't know the divisional increments while the arrange is good if you do know how much your incremnts are going to be. 
+
+Indexing and slicing
+> Q. What is an array of size 3x4 that would produce the following results. Show your work on how you deduced your answer on paper or some kind of graphics :
+
+> A. 
+>
+> ![Image of three_by_four](images3/three_by_four.JPG)
+
+> Q. Show your code - Now solve the above indexing and slicing problem by writing the code using array assignment. 
+
+> A.
+> 
+> CODE:
+> ![Image of array_code](images3/array_code.JPG)
+>  
+> OUTPUT:
+> ![Image of array_output](images3/array_output.JPG)
+
+> Q. Using fromstring, vstack, and a for loop, create an array of 100x4 from s: [[1,2,3,4],[1,2,3,4],[1,2,3,4]…..[1,2,3,4]]. 
+
+> A.
+> 
+> CODE:
+> ![Image of array_code](images3/value_array_code.JPG)
+>  
+> OUTPUT: I didn't include the 100 repeating array of [1,2,3,4] because it wouldn't fit. I just outputed the dimensions of the aray at the bottom whihc is 100x4
+> ![Image of array_output](images3/value_array_output.JPG)
+
+## Challenges 
+
+### Challenge 1: Setting Your Watch to Send Data
+
