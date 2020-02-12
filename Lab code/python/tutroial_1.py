@@ -20,7 +20,7 @@ def send_serial(ser):
         
 
 def read_serial1(ser):
-    s = ser.read(30).decode('utf-8')     # read 30 bytes and decode it
+    s = ser.read(10).decode('utf-8')     # read 30 bytes and decode it
     print(s)
 
 def readSerial2(ser):
@@ -74,7 +74,7 @@ def receive_sample(ser):
         if(data_array.size == 0): 
             data_array = temp_data_array
         else:
-            data_array = np.vstack((data_array,temp_data_array))#vstack temp_data_array to end of data_array
+            data_array = np.vstack((data_array,temp_data_array))#vstack temp_data_array to end of data_arrayc
         string_buffer = [] # reset string_buffer to []
     else:
         string_buffer.append(s) # append the new char to string_buffer
@@ -83,9 +83,10 @@ def receive_sample(ser):
 
 def main():
     ser = setup_serial()
-    data_array = receive_data(ser)
-    print(data_array)
+    readSerial3(ser)
     ser.close()
+
+
 
 if __name__== "__main__":
     main()

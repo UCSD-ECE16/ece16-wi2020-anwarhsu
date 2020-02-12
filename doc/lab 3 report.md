@@ -43,13 +43,19 @@ Date: 01/30/2020
 
 > Q. Change the code to read 10 bytes instead of 30. Now what do you get? What are the 10 bytes you received? Remove decode might help you understand
 
-> A. 
+> A. It gives us less output numbers because its reading less bytes. I get the values [10,11,12] with 10 bytes while if i use 30 bytes I get [89,90,91,92,93,94,95,96] which is bascially 3 times longer than the 10 bytes. The 10 bytes conisist of the integer values of 10,11,12. 
 
 ### Tutorial 2: Receiving A Byte at a Time 
 
 > Q. Describe the output you observe on the Python side? Is it the same as before? What does this tell you about the print() function of python? 
 
-> A. the Try keyword is lowercase t. so its try:
+> readSerial2 prints the each character in a newline because we are reading 1 byte. While readSerial3 prints the whole list because we are appending the characters into a empty list and then using the print function to output the list. The print function can print all data types like lists and integers. 
+
+### Tutorial 2: Knowing when to quit
+
+> Q. We purposely made a few errors above. What were they? 
+
+>  A. the Try keyword is lowercase t. so its try:
 
 ### Tutorial 2: Numpy
 
@@ -147,22 +153,26 @@ Indexing and slicing
 ## Challenges 
 
 ### Challenge 1: Setting Your Watch to Send Data
+We are making an ardiuno program that would check to see if you input "start data" into the serial monitor. Once this is checked, it thens reads the acclerometer data and outputs the data/ time it takes to read it. Once we input "Stop Data" it stops the readings. 
+
+> Video of the ardiuno code working when we input start data and stop data 
+>![Image of challenge_2_code](videos3/chal_1.gif)
 
 
 ### Challenge 2: Reading Accelerometer Data
 
-> ![Image of challenge_2_code](images3/challenge_2_code.JPG)
+>![Image of challenge_2_code](images3/challenge_2_code.JPG)
 >![Image of challenge_2_output](images3/challenge_2_output.JPG)
 
 
 
 > Q. What happens if you don’t decode the incoming char?
 
-> A. The code cant read the incoming chars 
+> A. The code cant read the incoming chars because it can only read bytes. The input without the decode is a tuple getting the indexs by a for loop.  
 
 > Q. Try removing the logic for checking if the data_array is empty and always vstack even if the data_array is empty. What is the error that gets thrown? Why?
 
-> A. 
+> A. We get the error "all the input array dimensions for the concatenation axis must match exactly, but along dimension 1, the array at index 0 has size 4 and the array at index 1 has size 7." This is casued because each newline character, it would add from the last ones. For example, if we were to look at what the 2nd row would look like, its 1000,1234,1234,1234,2000,1234,1234,1234 instead of just priting 2000,1234,1234,1234. Its keeps stacking as we get to the next row, which then causes a dimension error as we are trying to vstack with missing columns. 
 
 > Q. Try removing the 1 second delay on the MCU when starting data sending. Describe what happens?
 
