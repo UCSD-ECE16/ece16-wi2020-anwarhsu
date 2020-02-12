@@ -29,9 +29,13 @@ Date: 01/30/2020
 
 > Q. Identify in the above code, (1) which python command prints to the python’s own console, and (2) which python command prints to the serial port to the MCU?
 
-> A. 1) The
+> A. 1) print() function prints python to its own console. 2) ser.write(S.encode('utf-8'))  prints to the MCU serial port. 
 
-### Receiving Data with Python:
+> Q. What happens if you take out the \n in the string? Why?
+
+> A. Its not going to get outputed. In the receiveMessage function in Ardiuno, it outprints the message onto the OLED once the '\n' character has been read. If we take out this '\n' character it will keep adding the the in_text_index variable until a new line has been meet. 
+
+### Tutorial 2: Receiving Data with Python:
 
 > Q. Describe the output you observe on the Python side? 
 
@@ -41,13 +45,13 @@ Date: 01/30/2020
 
 > A. 
 
-### Receiving A Byte at a Time 
+### Tutorial 2: Receiving A Byte at a Time 
 
 > Q. Describe the output you observe on the Python side? Is it the same as before? What does this tell you about the print() function of python? 
 
 > A. the Try keyword is lowercase t. so its try:
 
-### Numpy
+### Tutorial 2: Numpy
 
 Numpy Array:
 > Q. Show the code - Make an Numpy Array called test_array  from a list = [0,10,4,12]. Subtract 20 from the test_array, what do you get? What is the shape of the test_array
@@ -143,4 +147,24 @@ Indexing and slicing
 ## Challenges 
 
 ### Challenge 1: Setting Your Watch to Send Data
+
+
+### Challenge 2: Reading Accelerometer Data
+
+> ![Image of challenge_2_code](images3/challenge_2_code.JPG)
+>![Image of challenge_2_output](images3/challenge_2_output.JPG)
+
+
+
+> Q. What happens if you don’t decode the incoming char?
+
+> A. The code cant read the incoming chars 
+
+> Q. Try removing the logic for checking if the data_array is empty and always vstack even if the data_array is empty. What is the error that gets thrown? Why?
+
+> A. 
+
+> Q. Try removing the 1 second delay on the MCU when starting data sending. Describe what happens?
+
+> A. 
 

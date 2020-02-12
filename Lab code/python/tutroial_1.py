@@ -77,13 +77,14 @@ def receive_sample(ser):
             data_array = np.vstack((data_array,temp_data_array))#vstack temp_data_array to end of data_array
         string_buffer = [] # reset string_buffer to []
     else:
-        string_buffer.append(c) # append the new char to string_buffer
+        string_buffer.append(s) # append the new char to string_buffer
 
 
 
 def main():
     ser = setup_serial()
-    readSerial4(ser)
+    data_array = receive_data(ser)
+    print(data_array)
     ser.close()
 
 if __name__== "__main__":
