@@ -65,10 +65,10 @@ Numpy Array:
 > A.
 > 
 >CODE:
-> ![Image of numpy_array](images3/numpy_array.JPG)
+> ![Image of numpy_array](images3/Numpy_Array.JPG)
 >  
 > OUTPUT:
-> ![Image of numpy_array_output](images3/numpy_array_output.JPG)
+> ![Image of numpy_array_output](images3/Numpy_Array_output.JPG)
 
 > Q. Show the code - Make a 2D array of test_2D_array from [0,10,4,12][1,20,3,41]
 
