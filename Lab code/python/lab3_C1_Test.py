@@ -1,83 +1,21 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Feb 11 10:38:41 2020
-
-@author: Anwar
-"""
 import numpy as np
-import serial
 
+
+incoming_stream = b'1',b'0',b'0',b'0',b',',b'1',b'2',b'3',b'4',b',',b'1',b'2',b'3',b'4',b',',b'1',b'2',b'3',b'4',b'\n',b'2',b'0',b'0',b'0',b',',b'1',b'2',b'3',b'4',b',',b'1',b'2',b'3',b'4',b',',b'1',b'2',b'3',b'4',b'\n',b'3',b'0',b'0',b'0',b',',b'1',b'2',b'3',b'4',b',',b'1',b'2',b'3',b'4',b',',b'1',b'2',b'3',b'4',b'\n',b'4',b'0',b'0',b'0',b',',b'1',b'2',b'3',b'4',b',',b'1',b'2',b'3',b'4',b',',b'1',b'2',b'3',b'4',b'\n',b'5',b'0',b'0',b'0',b',',b'1',b'2',b'3',b'4',b',',b'1',b'2',b'3',b'4',b',',b'1',b'2',b'3',b'4',b'\n',b'6',b'0',b'0',b'0',b',',b'1',b'2',b'3',b'4',b',',b'1',b'2',b'3',b'4',b',',b'1',b'2',b'3',b'4',b'\n',b'7',b'0',b'0',b'0',b',',b'1',b'2',b'3',b'4',b',',b'1',b'2',b'3',b'4',b',',b'1',b'2',b'3',b'4',b'\n',b'8',b'0',b'0',b'0',b',',b'1',b'2',b'3',b'4',b',',b'1',b'2',b'3',b'4',b',',b'1',b'2',b'3',b'4',b'\n',b'9',b'0',b'0',b'0',b',',b'1',b'2',b'3',b'4',b',',b'1',b'2',b'3',b'4',b',',b'1',b'2',b'3',b'4',b'\n',b'1',b'0',b'0',b'0',b'0',b',',b'1',b'2',b'3',b'4',b',',b'1',b'2',b'3',b'4',b',',b'1',b'2',b'3',b'4',b'\n'
 
 string_buffer = []
 data_array = np.array([])
 
-def setup_serial():
-    serial_name = 'COM5'
-    ser = serial.Serial(serial_name, 9600)  # open serial port
-    print(ser.name)         # check which port was really used
-    return ser
-
-def receive_data(ser):
-    sample_number = 0    # your code
-    
-# Send start data
-    while sample_number < 100:
-        try:
-            receive_sample(ser)
-            sample_number += 1
-        except(KeyboardInterrupt):
-            # Send stop data 
-            ser.close() #we'll use ctrl+c to stop the program
-            print("Exiting program due to KeyboardInterrupt")
-            break
-    # Send stop data 
-
-    # at end of code:
-    return data_array
-
-def receive_sample(ser):
-    global string_buffer
-    global data_array
-
-    s = ser.read(1).decode('utf-8')# read a byte from serial (remember to decode)
-    if( s == '\n'):
-        data_string = ''.join(string_buffer) #JOIN buffer 
+for incoming_byte in incoming_stream:
+    c = incoming_byte.decode('utf-8') #this takes the place of reading the byte from serial
+    if( c == '\n'):
+        data_string = ''.join(string_buffer)#JOIN buffer 
         print(data_string)
-        temp_data_array = np.fromstring(data_string, dtype = int, sep = ',')#string to np array
+        temp_data_array =np.fromstring(data_string, dtype = int, sep = ',')#csv string to 1x4 np array
         if(data_array.size == 0): 
             data_array = temp_data_array
         else:
-            data_array = np.vstack((data_array,temp_data_array))#vstack temp_data_array to end of data_array
-        string_buffer = [] # reset string_buffer to []
+            data_array = np.vstack((data_array,temp_data_array))
+        string_buffer = []
     else:
-        string_buffer.append(s) # append the new char to string_buffer
-
-
-def calc_sampling_rate(data_array):
-    #code to calculate sampling rate from data_array
-    dff = np.diff(data_array, n =1, axis =0)
-    mean = np.mean(dff, axis = 0)
-    return (mean[0]) 
-
-
-def send_serial(ser):
-
- 
-
-    S_List = ['start',' data','\n']
-
-
-    for S in S_List:
-        ser.write(S.encode('utf-8'))
-
-def main():
-    ser = setup_serial()
-    send_serial(ser)
-    data_array = receive_data(ser)
-
-    print("sampling rate:", calc_sampling_rate(data_array))
-    ser.close()
-    
-if __name__== "__main__":
-    main()
-
+       string_buffer.append(c)

@@ -160,15 +160,18 @@ We are making an ardiuno program that would check to see if you input "start dat
 
 
 ### Challenge 2: Reading Accelerometer Data
+We are creating a function that can read the incoming data sent from the Serial monitor to pythonb. We then also explore using the idea of using the a test case. 
 
+> CODE:
 >![Image of challenge_2_code](images3/challenge_2_code.JPG)
+> OUTPUT:
 >![Image of challenge_2_output](images3/challenge_2_output.JPG)
 
 
 
 > Q. What happens if you don’t decode the incoming char?
 
-> A. The code cant read the incoming chars because it can only read bytes. The input without the decode is a tuple getting the indexs by a for loop.  
+> A. The code cant read the incoming chars because it can only read bytes. The input without the decode is a tuple getting the indexs by a for loop(baiscally not a byte).  
 
 > Q. Try removing the logic for checking if the data_array is empty and always vstack even if the data_array is empty. What is the error that gets thrown? Why?
 
@@ -176,5 +179,30 @@ We are making an ardiuno program that would check to see if you input "start dat
 
 > Q. Try removing the 1 second delay on the MCU when starting data sending. Describe what happens?
 
-> A. 
+> A. Since the delay is removed, The MCU immeditayely sends data to the serial. port. These first few bytes might not get read so it causes the data to be different than expected. 
 
+### Challenge 3: Calculate the Sampling Rate:
+We trying to recieve the data via python and send our serial input as well. 
+
+> Below is the expected ouput of 100 data sets. The sampling rate is then outputed. 
+> ![Image of graph_sample](images3/challenge_3.JPG)
+
+
+> Q. Start with Baud rate of 115200. What is your calculated sampling rate when you set the sampling rate to 10Hz,50Hz,100Hz,1000Hz on the MCU. Make a plot (using a spreadsheet program) of the actual sampling rate (y-axis) vs expected sampling rate (x-axis)
+
+> A. There is a slight delay from the actual sampling to expected because the machine has some slight delay when running each line of code. We can see however, as sample frequency goes up, the less accurate the actual results(as shown by the 1000hz rate with almost double the expected frequency value if 1971 compare to 1000). This is cause by the machine not being able to keep up with the speeds. A solution to this would be increaseing the baud rate which would make the MCU read faster. explored in the next question 
+> ![Image of graph_sample](images3/graph_sample.JPG)
+
+> Q. How does this change with Baud rate 9600 vs 115200 vs 230400 vs 460800. For 1000Hz, make a plot of the actual sampling rate (y-axis) vs Baud Rate (x-axis).
+
+> A. As, we can see, when we increases the Baud rate, the accuracy of the actual sampling rate vs expected rate becomes better. We can see betwwen 115200 vs 230400. As we double the baud rate it made the sampling rate 1002. Which is close to the expected value of 1000. This increase makes sense because the MCU is reading the data faster and thus giving us accurate results. 
+> ![Image of graph_Baud](images3/graph_Baud.JPG)
+
+> Q. What happens if you use millis instead of micros for timing and Why?
+
+> A. The caculation would be wrong. This is because we made our function revolve around the micros() for example. For the calcSamplingDelay function. We did 1million/sample_rate. This 1million is used because we are working in micro seconds. If we did this formula with millis. The units are wrong, and the cacluation would be wrong. 
+
+### Challenge 4:
+We are using the bluetooth option to recieve data wirelessly. 
+
+> ![Image of bluetooth](videos3/bluetooth.gif)
