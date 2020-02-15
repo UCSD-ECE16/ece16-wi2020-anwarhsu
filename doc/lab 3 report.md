@@ -196,7 +196,7 @@ We trying to recieve the data via python and send our serial input as well.
 > Q. How does this change with Baud rate 9600 vs 115200 vs 230400 vs 460800. For 1000Hz, make a plot of the actual sampling rate (y-axis) vs Baud Rate (x-axis).
 
 > A. As, we can see, when we increases the Baud rate, the accuracy of the actual sampling rate vs expected rate becomes better. We can see betwwen 115200 vs 230400. As we double the baud rate it made the sampling rate 1002. Which is close to the expected value of 1000. This increase makes sense because the MCU is reading the data faster and thus giving us accurate results. 
-> ![Image of graph_aud](images3/graph_baud.JPG)
+> ![Image of graph_baud](images3/graph_baud.JPG)
 
 > Q. What happens if you use millis instead of micros for timing and Why?
 
