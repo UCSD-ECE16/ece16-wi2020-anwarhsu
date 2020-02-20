@@ -1,5 +1,12 @@
 # -*- coding: utf-8 -*-
 """
+Created on Wed Feb 19 16:38:06 2020
+
+@author: Anwar
+"""
+
+# -*- coding: utf-8 -*-
+"""
 Created on Tue Feb 11 10:38:41 2020
 @author: Anwar
 """
@@ -61,7 +68,7 @@ def calc_sampling_rate(data_array):
     #code to calculate sampling rate from data_array
     dff = np.diff(data_array, n =1, axis =0)
     mean = np.mean(dff, axis = 0)
-    return (mean[0]) 
+    return (1000000 / mean[0]) 
 
 
 def send_serial(ser):
@@ -85,10 +92,12 @@ def send_serial_stop(ser):
         ser.write(S.encode('utf-8'))
         
 def moving_average(s,n_avg):
-        ma = np.array(s.size)
-        for i in np.arange(0,len(s)):
-            ma[i] = np.mean([s[i],s[i+n_avg]])#mean of s from index i to i+n_avg
-        return ma
+    
+    ma = np.zeros(s.size) #previously np.array(s.size) that was incorrect, sorry
+    for i in np.arange(0,len(s)):
+        ma[i] = np.mean(s[i:i+n_avg])#mean of s from index i to i+n_avg
+    return ma
+
     
 def detrend(s,n_avg): #remove the moving average from the signal
     ma = moving_average(s,n_avg)
@@ -100,29 +109,33 @@ def plot_data(data_array):
     x = data_array[:,1]
     y = data_array[:,2]
     z = data_array[:,3]
-    #IR = data_array[:,4]
+    IR = data_array[:,4]
 
+    x = detrend(x,20)
+    y = detrend(y,20)
+    z = detrend(z,20)
+    IR = detrend(IR,20)
 
 
     plt.clf()
-    plt.subplot(311)
+    plt.subplot(411)
     plt.title('Example Data plot', fontsize=10)#plt.subplot(311)
     plt.plot(time,x) #fill in ax and ay
     plt.ylabel("x Amplitude")
 
-    plt.subplot(312)
+    plt.subplot(412)
     plt.plot(time,y) #fill in bx and by
     plt.ylabel("y Amplitude")
     
-    plt.subplot(313)
+    plt.subplot(413)
     plt.plot(time,z)
     plt.ylabel("z Amplitude")
-    """  
+    
     plt.subplot(414)
     plt.plot(time,IR)
     plt.ylabel("IR Amplitude")
     plt.xlabel(u'Time(${\mu}s$)')
-    """
+    
 
 
 def main():
@@ -133,8 +146,12 @@ def main():
     print("sampling rate:", calc_sampling_rate(data_array))
     np.savetxt("data_file.csv", data_array, delimiter=",")
     data_array1 = np.genfromtxt('data_file.csv', delimiter=',')
+    
+    
     plot_data(data_array1)
-    send_serial_stop(ser)
+    
+
+       
     ser.close()
 
     
