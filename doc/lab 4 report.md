@@ -42,3 +42,34 @@ Date: 02/13/2020
 
 > A. The first array of [1,2,3,4] is the initale points as showed by the red line starting at 4 green at 3, orange at 2, blue at 1. The second array[1,4,9,16] plots the next point when x gets incremented by one and plots the y axis(as shown below). 
 >![Image of two_array](images4/two_array.JPG)
+
+> Q. Try your best to replicate the above plot by shaking your accelerometer. The above was sampled at 50Hz for 10 seconds. Make a gif of you running your program, shaking your accelerometer, and a plot showing up similar to the one above.
+
+> A. ![Image of two_array](videos4/tutorial_graph.gif)
+
+
+> Q. What is approximately the frequency of oscillation of the x axis signal in the plot above? 
+
+> A. There about 4 cycles in the time frame around 2 seconds. Period would be 2 / 4 = .5 seconds. Frequency of oscillation would be 1/.5 = 2hz 
+
+## Removing Mean Offset 
+
+### Challenges
+
+## Challenge 1:
+> Q. Why do we plot the negative of the signal? This has to do with light absorption. We talked about it in class. 
+
+> A. Since there is blood, it blocks the light, therefire there is less light. 
+
+> Q. Try different sampleAverage parameters and plot them. What is the effect of sampleAverage on the smoothness of the signal? 
+
+> A. As we increase the sampleAverage, we get less noise and a better image of what is expected. As we we can see the as we increase the n to around 20, it looks more like a heart rate reading that is expect vs the n = 5 which looks off. 
+>
+> Sample: n = 5
+> ![Image of sample_5](images4/sample_5.JPG)
+>
+> Sample: n = 10
+>![Image of sample_10](images4/sample_10.JPG)
+>
+> Sample: n = 20
+>![Image of sample_20](images4/sample_20.JPG)
