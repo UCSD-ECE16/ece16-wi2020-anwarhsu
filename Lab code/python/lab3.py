@@ -21,8 +21,8 @@ sample_number = 0
 
 
 def setup_serial():
-    serial_name = 'COM5'
-    ser = serial.Serial(serial_name, 9600 )  # open serial port
+    serial_name = 'COM3'
+    ser = serial.Serial(serial_name, 115200 )  # open serial port
     print(ser.name)         # check which port was really used
     return ser
 
@@ -30,7 +30,7 @@ def receive_data(ser):
     global sample_number# your code
     
 # Send start data
-    while sample_number < 100:
+    while sample_number < 450:
         try:
             receive_sample(ser)
         except(KeyboardInterrupt):
@@ -103,22 +103,28 @@ def detrend(s,n_avg): #remove the moving average from the signal
     ma = moving_average(s,n_avg)
     return s - ma#s minus the moving_average
 
+def signal_diff(s):
+    s_diff = np.diff(s)#calculate the gradient using np.diff
+    s_diff =np.append(s_diff, 0) #np.diff returns one shorter, so need to add a 0
+    return s_diff#remember to return s_diff
+
+
 def plot_data(data_array):
-    
+    count = 0
     time = data_array[:,0]
     x = data_array[:,1]
     y = data_array[:,2]
     z = data_array[:,3]
     IR = data_array[:,4]
 
-    x = detrend(x,20)
-    y = detrend(y,20)
-    z = detrend(z,20)
-    IR = detrend(IR,20)
-
-
+    IR2 = normalize_signal(IR)
+    
+    IR2 = detrend(IR2, 10)
+    #IR2 = normalize_signal(IR)
+  
+    
     plt.clf()
-    plt.subplot(411)
+    """plt.subplot(411)
     plt.title('Example Data plot', fontsize=10)#plt.subplot(311)
     plt.plot(time,x) #fill in ax and ay
     plt.ylabel("x Amplitude")
@@ -129,13 +135,37 @@ def plot_data(data_array):
     
     plt.subplot(413)
     plt.plot(time,z)
-    plt.ylabel("z Amplitude")
+    plt.ylabel("z Amplitude")"""
     
-    plt.subplot(414)
+
+    
+    plt.subplot(211)
     plt.plot(time,IR)
-    plt.ylabel("IR Amplitude")
+    plt.ylabel("IR2 Amplitude")
     plt.xlabel(u'Time(${\mu}s$)')
     
+    plt.subplot(212)
+    plt.plot(time,IR2)
+    
+def calc_heart_rate_time(signal,fs):
+    count = 0
+    
+    signal = detrend(signal,fs)#filter the signal to remove baseline drifting
+    #filter the signal to remove high frequency noise
+    norm_signal = normalize_signal(signal)#Normalize the signal between 0 and 1
+    #Explore using the signal directly or potentially using the diff of the signal. 
+    #Count the number of times the signal crosses a threshold.
+    if norm_signal > 1:
+        count += 1
+    return count * 6 #Calculate the beats per minute. 
+
+def normalize_signal(signal):
+    min = -800#find min of signal
+    signal = signal - min#subtract the minimum so the minimum of the signal is zero
+    max =1200#find the new maximum of the signal
+    norm_signal = signal / max#divide the signal by the new maximum so the maximum becomes 1
+    return norm_signal 
+
 
 
 def main():
@@ -143,12 +173,11 @@ def main():
     ser = setup_serial()
     send_serial(ser)
     data_array = receive_data(ser)
-    print("sampling rate:", calc_sampling_rate(data_array))
-    np.savetxt("data_file.csv", data_array, delimiter=",")
-    data_array1 = np.genfromtxt('data_file.csv', delimiter=',')
+    np.savetxt("Data_10_069.csv", data_array[:,4], delimiter=",")
     
-    
-    plot_data(data_array1)
+  
+    plot_data(data_array)
+
     
 
        

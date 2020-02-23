@@ -3,9 +3,9 @@ By: Anwar Hsu A15443752
 
 Date: 02/13/2020
 
-### Tutorial 
+## Tutorial 
 
-## MAX30105 Pulse Sensor:
+### MAX30105 Pulse Sensor:
 
 > Q. Note that you can connect both the heart rate sensor and your OLED at the same time, both of which use the I2C SDA and SCL lines. Why does this work?
 
@@ -54,9 +54,9 @@ Date: 02/13/2020
 
 ## Removing Mean Offset 
 
-### Challenges
+## Challenges
 
-## Challenge 1:
+### Challenge 1:
 > Q. Why do we plot the negative of the signal? This has to do with light absorption. We talked about it in class. 
 
 > A. Since there is blood, it blocks the light, therefire there is less light. 
@@ -73,3 +73,22 @@ Date: 02/13/2020
 >
 > Sample: n = 20
 >![Image of sample_20](images4/sample_20.JPG)
+
+> Q. Try different ledBrightness. Is brighter always better? Why or why not.
+
+> A. ![Image of led_bright](images4/led_bright.JPG)
+> As we can see, I maxed out the brightness. It shows us flatlining. This is caused because the the LED is too bright so the reflection that the blood reflects is insiginifcant as there is no change in IR reading. 
+
+### Challenge 2: Heart Rate Calculation
+
+> Q. Note that it is very important to normalize AFTER you’ve done the filtering. Try normalizing before filtering and describe what happens and why it doesn’t work for helping with our threshold. 
+
+> A. If we normalize first it dosen't get rid of high frequency reposne that we are trying to get rid of. After we apply the detrend after normalize, it shifts the cleans the normaliztion data. However, this is not the correct appoarch because we are trying to normalize the final data after we get rid of the high frqeuncy. 
+
+> Q. What threshold did you find to work well and how did you determine it? 
+
+> A. I find that the min is good around 800 as most of my data dosen't go below 0 whennormalized. The max, it varies from the range 800-1200 however I mostly use 1000. Sometimes I changed if the the data dosen't like 10000. 
+
+> Q. Show a scatter plot of your heart rate calculation (y axis) vs the heart rate of the reference. Calculate the Root Mean Squared Error (RMSE) of your detected heart rate vs the reference heart rate. RMSE is calculated as the square root of the mean of the square of the difference between your estimated heart rate and the reference heart rate. More about RMSE can be found here: https://towardsdatascience.com/what-does-rmse-really-mean-806b65f2e48e. 
+
+> A.  ![Image of led_bright](images4/final_data.JPG)

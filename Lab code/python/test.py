@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+
 """
 Created on Tue Feb 11 10:38:41 2020
 @author: Anwar
@@ -56,14 +56,6 @@ def receive_sample(ser):
     else:
         string_buffer.append(s) # append the new char to string_buffer
 
-
-def calc_sampling_rate(data_array):
-    #code to calculate sampling rate from data_array
-    dff = np.diff(data_array, n =1, axis =0)
-    mean = np.mean(dff, axis = 0)
-    return (1000000 / mean[0]) 
-
-
 def send_serial(ser):
 
  
@@ -85,17 +77,12 @@ def send_serial_stop(ser):
         ser.write(S.encode('utf-8'))
         
 def moving_average(s,n_avg):
-        print(s.size)
-        ma = np.zeros((s.size,1))
-        print(ma.shape)
-        j = 1
-        for i in np.arange(0,len(s)-1):
-            if (i+n_avg < len(s)):
-                ma[i] = np.mean(s[i:i+n_avg])#mean of s from index i to i+n_avg 
-            elif (i+n_avg >= len(s)):  
-                ma[i] = np.mean(s[i:i+n_avg-j])
-                j += 1
-        return ma
+    
+    ma = np.zeros(s.size) #previously np.array(s.size) that was incorrect, sorry
+    for i in np.arange(0,len(s)):
+        ma[i] = np.mean(s[i:i+n_avg])#mean of s from index i to i+n_avg
+    return ma
+
     
 def detrend(s,n_avg): #remove the moving average from the signal
     ma = moving_average(s,n_avg)
@@ -109,10 +96,10 @@ def plot_data(data_array):
     z = data_array[:,3]
     IR = data_array[:,4]
 
-    x = detrend(x,5)
-    y = detrend(y,5)
-    z = detrend(z,5)
-    IR = detrend(IR,5)
+    """x = detrend(x,20)
+    y = detrend(y,20)
+    z = detrend(z,20)
+    IR = detrend(IR,20)"""
 
 
     plt.clf()
@@ -141,26 +128,23 @@ def main():
     ser = setup_serial()
     send_serial(ser)
     data_array = receive_data(ser)
-    print("sampling rate:", calc_sampling_rate(data_array))
+
     np.savetxt("data_file.csv", data_array, delimiter=",")
     data_array1 = np.genfromtxt('data_file.csv', delimiter=',')
     
+    print(data_array1)
+    time = data_array1[:,0]
+    x = data_array1[:1]
     
-    z = data_array1[:,3]
-    z2 = moving_average(z,10)
-    time = data_array[:,0]
-    
-
+    print(time)
     plt.clf()
-    plt.subplot(211)
+    plt.subplot(411)
     plt.title('Example Data plot', fontsize=10)#plt.subplot(311)
-    plt.plot(time,z) #fill in ax and ay
-    plt.ylabel("z Amplitude")
-
-    plt.subplot(212)
-    plt.plot(time,z2) #fill in bx and by
-    plt.ylabel("z detrend Amplitude")
+    plt.plot(time,x) #fill in ax and ay
+    plt.ylabel("x Amplitude")
     
+
+       
     ser.close()
 
     
