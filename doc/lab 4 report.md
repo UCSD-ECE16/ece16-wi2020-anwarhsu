@@ -41,8 +41,7 @@ Date: 02/13/2020
                                 [1, 4, 9,16]
 
 > A. The first array of [1,2,3,4] is the initale points as showed by the red line starting at 4 green at 3, orange at 2, blue at 1. The second array[1,4,9,16] plots the next point when x gets incremented by one and plots the y axis(as shown below). 
->![Image of two_array](images4/two_array.JPG)
-
+>![Image of sample_5](images4/two_array.JPG)
 > Q. Try your best to replicate the above plot by shaking your accelerometer. The above was sampled at 50Hz for 10 seconds. Make a gif of you running your program, shaking your accelerometer, and a plot showing up similar to the one above.
 
 > A. ![Image of two_array](videos4/tutorial_graph.gif)
@@ -93,14 +92,14 @@ This portion we are trying to understand the particle sensor and use ardiuno to 
 > ![Image of sample_5](images4/sample_5.JPG)
 >
 > Sample: n = 10
->![Image of sample_10](images4/sample_10.JPG)
+>![Image of sample_5](images4/sample_10.JPG)
 >
 > Sample: n = 20
->![Image of sample_20](images4/sample_20.JPG)
+>![Image of sample_5](images4/sample_20.JPG)
 
 > Q. Try different ledBrightness. Is brighter always better? Why or why not.
 
-> A. ![Image of led_bright](images4/led_bright.JPG)
+> A. ![Image of sample_5](images4/led_bright.JPG)
 > As we can see, I maxed out the brightness. It shows us flatlining. This is caused because the the LED is too bright so the reflection that the blood reflects is insiginifcant as there is no change in IR reading. 
 
 > Deliverable: Tune the settings so that you ultimately get a sampling rate of 50Hz. What setting did you land on that gave you a clean signal and at the right sampling rate? Show a gif of you starting your code, and end with the plot appearing. Also include a still image of the plot. 
