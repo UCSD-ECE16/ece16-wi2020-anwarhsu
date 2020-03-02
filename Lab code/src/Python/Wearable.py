@@ -39,8 +39,9 @@ class Wearable:
         self.collect_data(2250)
         
         
-        data_array1 = np.genfromtxt('data_file.csv', delimiter=',')
+        data_array1 = np.genfromtxt('Data_10_069.csv', delimiter=',')
         
+      
        
         data_temp = data_array1[:,4]
         data_temp = Heartrate.moving_average(self,s = data_temp,n_avg = 20)

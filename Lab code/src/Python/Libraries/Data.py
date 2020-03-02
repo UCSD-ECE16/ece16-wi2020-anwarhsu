@@ -20,7 +20,7 @@ class Data:
             self.data_array = np.vstack((self.data_array,new_data))
             if len(self.data_array) == 450:
                 print("sampling rate:",self.calc_sampling_rate())
-                np.savetxt("data_file.csv", self.data_array, delimiter=",")
+               # np.savetxt("data.csv", self.data_array, delimiter=",")
                 
 
         
