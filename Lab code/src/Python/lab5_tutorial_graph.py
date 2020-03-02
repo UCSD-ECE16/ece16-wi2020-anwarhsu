@@ -31,6 +31,7 @@ dif = est - gnd#take the difference of gnd and est
 std = np.std(est)#get the standard deviation of the difference (using np.std)
 
 bias = np.mean(dif)#the mean value of the difference
+print(bias)
 
 upper_std = (bias + 1.96) * std#the bias plus 1.96 times the std
 
