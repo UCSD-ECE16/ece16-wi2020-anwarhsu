@@ -18,9 +18,10 @@ class Data:
             self.data_array = new_data
         else:
             self.data_array = np.vstack((self.data_array,new_data))
-            if len(self.data_array) == 450:
+            # print(len(self.data_array))
+            if len(self.data_array) == 500:
                 print("sampling rate:",self.calc_sampling_rate())
-               # np.savetxt("data.csv", self.data_array, delimiter=",")
+                np.savetxt("data.csv", self.data_array, delimiter=",")
                 
 
         
@@ -29,13 +30,17 @@ class Data:
         self.data_array =  np.array([])# reset data_array to empty np array
         
     def get_num_samples(self):
-        return self.data_array.size#the size of data_array
+        return len(self.data_array)#the size of data_array
     
     def calc_sampling_rate(self):
            
-        dff = np.diff(self.data_array, n =1, axis =0)
-        mean = np.mean(dff, axis = 0)
-        print("mean[0]",mean[0])
-        return (1000000 / mean[0]) 
+        # dff = np.diff(self.data_array, n =1, axis =0)
+        # mean = np.mean(dff, axis = 0)
+        # print("mean[0]",mean[0])
+        mean_diff = np.mean(np.diff(self.data_array[:,0],1,0))
+        sampling_rate = 1000000/mean_diff
+        print(sampling_rate)
+        # return (1000000 / mean[0]) 
+        return sampling_rate
 
 

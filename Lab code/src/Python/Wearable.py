@@ -15,7 +15,7 @@ import numpy as np
 class Wearable:
     def __init__(self, serial_name, baud_rate):
         self.data = Data()
-        self.connection = Connection('COM4', 115200)
+        self.connection = Connection('COM4', 115200 )
         self.serial_name = serial_name
         self.baud_rate = baud_rate
        
@@ -36,10 +36,10 @@ class Wearable:
         self.connection.end_streaming()#end streaming
     
     def main(self):
-        self.collect_data(2250)
+        self.collect_data(500)
         
         
-        data_array1 = np.genfromtxt('Data_10_069.csv', delimiter=',')
+        data_array1 = np.genfromtxt('data.csv', delimiter=',')
         
       
        

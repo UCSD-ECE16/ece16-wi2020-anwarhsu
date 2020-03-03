@@ -12,15 +12,15 @@ class Heartrate:
     def calc_heart_rate_time(self,signal):
         count = 0
         state = 0
-        
+        threshold = .6
         
         for value in signal:
             if state == 0:
-                if value > 1:
+                if value > threshold:
                     count += 1
                     state = 1
                 
-            if value < 1:
+            if value < threshold:
                 state = 0
         print("count",count)
         return count * 6 #Calculate the beats per minute. 
@@ -28,7 +28,7 @@ class Heartrate:
     def normalize_signal(self,signal):
         min = -1000#find min of signal
         signal = signal - min#subtract the minimum so the minimum of the signal is zero
-        max =950#find the new maximum of the signal
+        max =1800#find the new maximum of the signal
         norm_signal = signal / max#divide the signal by the new maximum so the maximum becomes 1
         return norm_signal 
 

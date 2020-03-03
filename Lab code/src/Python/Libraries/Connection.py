@@ -33,6 +33,7 @@ class Connection:
     def read_serial(self):
          s = self.ser.read(1).decode('utf-8')
          print(s)
+         return s
     
     def start_streaming(self):
         S_List = ['start',' data','\n']
@@ -45,7 +46,7 @@ class Connection:
         c = self.ser.read(1).decode('utf-8')         # read 1 byte
         if( c == '\n'):
             data_string = ''.join(self.string_buffer)
-            print(data_string)
+            # print(data_string)
             temp_data_array = np.fromstring(data_string,dtype=int,sep=',')
             self.data.add_data(temp_data_array) #using the Data module
             self.string_buffer = []

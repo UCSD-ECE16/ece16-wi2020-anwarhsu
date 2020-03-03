@@ -22,8 +22,6 @@ b,a = signal.butter(filter_order, filter_cutoff, btype='low')
 w, h = signal.freqz(b,a)
 plt.plot(w, 20 * np.log10(abs(h)))
 
-
-
 plt.subplot(3,2,3)
 plt.plot(data_array[:,0],data_array[:,4])
 
@@ -31,8 +29,9 @@ plt.subplot(3,2,4)
 plt.psd(data_array[:,4], NFFT=len(data_array[:,0]), Fs=fs)
 plt.show()
 
+plt.subplot(3,3,5)
 
-plt.subplot(3,2,3)
+s_filt = signal.lfilter(b,a,data_array[:,4])
 
-b,a = signal.butter(filter_order, filter_cutoff, btype='low')
-plt.plot(b,a)
+plt.subplot(3,3,6)
+plt.psd(s_filt, NFFT=len(data_array[:,0]), Fs=fs)
