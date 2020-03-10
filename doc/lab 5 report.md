@@ -88,6 +88,37 @@ Date: 02/29/2020
 
 > ![Image of challenge_1](images5/Challenge_two_graph.jpg)
 
+> ![Image of challenge_1](images5/Challenge_2_freq.jpg)
+
+
+> Q. How does the dominant frequency change with regards to the heart rate?
+
+> As heart rate increases, the dominat frequncys shoudl also increases. For example, if we had a heart beat of 60bpm, thats 1hz. if we had a heartrate of 120 bpm thats 2hz. 
+
+> Q. If the heart rate is 65BPM, what is approximately the fundamental frequency? What about the second and third harmonic? Why is it that even though the heart rate is 65BPM, there are higher frequency content than just the fundamental frequency? What does this imply about how you should be setting your sampling rate if you expect a heart rate maximum of 180BPM?
+
+> A. 65/60 = 1.083hz. The second harmonic would be 1.083 *2 = 2.166667 and third would be 1.083* 3 = 3.25. If my heartrate is 180 BPM then my fundamental frequency would be 180/60 which is 3hz. Since we want to sample x4 the expected. we would want to sample at 12hz for the heart rate. 
+
+> Q. Compare and contrast the two different algorithms. Which has a lower error? Which has a bias closer to 0? Do you see any signs of mean tracking in either algorithm? Use the correlation and difference plots to support your argument.
+
+> A. My sampling rate from last lab(unknown eroors) and data from lab 4 has too much noise. This has resulted in some of the resuslts as showsn by the 3.7 freq to be shown. These are the errors the the feequency domain holds. 
+
+### Challenge 3: Calculate Heart Rate with Frequency Domain Features
+
+> ![Image of challenge_1](images5/challenge_3_code.jpg)
+
+> ![Image of challenge_1](images5/challenge_3_output.jpg)
+
+> Q. What are some failure modes of your frequency domain solution? 
+
+> A. Theres little variance in terms of getting differency frequncy(less precision). It basically will give us a discrete frequncy output like 1.1hz or 1.5 hz for the next index rather than 1.12432423hz for more precision. 
+
+> Q. Compare and contrast the two different algorithms. Which has a lower error? Which has a bias closer to 0? Do you see any signs of mean tracking in either algorithm? Use the correlation and difference plots to support your argument.
+
+> Compared to the time domain graph. The frequency graph gives us a better r value .63 compared to .33. It seams that the frquency domain graph is better at getting in the general region(percision) however, for the time domain graph with the percise points, it gives us a more accurate result. 
+
+> ![Image of challenge_1](images5/challenge_3_graph.jpg)
+
 ## Tutorial part 2
 
 ### Tutoiral : List all files in directory
@@ -117,3 +148,21 @@ Date: 02/29/2020
 >![image of list_data](images5/challenge_4_sub_id.jpg)
  
 >![image of list_data](images5/challenge_4_ref.jpg)
+
+### Challenge 5:
+
+> Q. What is the difference between leave-one-out validation and leave-one-subject-out validation? Which are we doing and why is this important, and why would it be an issue if we used the other validation method given what we are building? 
+
+> leave-one-out validation would be training all but one and cycling through all. leave one subject out splits the data into groups and leaves one group out then cycles through these groups. The purpose of this lab is for our heartrate sensor to work with different types of people. So we need to split our data into groups. This will allow the machine to train data given groups. 
+
+> ![image of gmm graph](images5/challenge_5_gmm_graph.JPG)
+
+> ![image of gmm graph](images5/challenge_5_bestgraph.JPG)
+
+> ![image of gmm graph](images5/challenge_5_outputs.JPG)
+
+> ![image of gmm graph](images5/challenge_5_flawoutput.JPG)
+
+> ![image of gmm graph](images5/challenge_5_flawgraph.JPG)
+
+### Challenge 6

@@ -45,6 +45,3 @@ class Heartrate:
         for i in np.arange(0,len(s)):
             ma[i] = np.mean(s[i:i+n_avg])#mean of s from index i to i+n_avg
         return s - ma
-
-    
-    

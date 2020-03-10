@@ -1,8 +1,9 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Sun Feb 23 20:52:19 2020
+Created on Tue Jan 28 12:21:58 2020
 
-@author: Anwar
+@author: edwardwang
 """
 import matplotlib.pyplot as plt
 

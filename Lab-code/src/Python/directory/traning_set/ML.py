@@ -7,9 +7,14 @@ Created on Thu Mar  5 11:09:30 2020
 import glob
 import numpy as np
 from scipy import signal
+import matplotlib.pyplot as plt
+from sklearn.mixture import GaussianMixture as GMM
+from scipy.stats import pearsonr
+
 
 
 all_files = glob.glob(r'C:\Users\Anwar\Documents\ECE16\ece16-wi2020-anwarhsu\Lab-code\src\Python\directory\traning_set\*.csv')
+
 
 unique_ids = []
 
@@ -44,15 +49,15 @@ list_ref = []
 
 
 
-
 for sub_id in unique_ids: 
     
     sub_files  = glob.glob(r'C:\Users\Anwar\Documents\ECE16\ece16-wi2020-anwarhsu\Lab-code\src\Python\directory\traning_set\%s?*.csv' % sub_id)
     
     for file in sub_files:
-        
         temp_file = (file.split("\\") )
+        
         data_array = np.genfromtxt(temp_file[-1], delimiter=',')
+        
         HR = data_array[:,4] #get the ppg signal from data using slicing
         HR = HR[0:500]
         
@@ -79,8 +84,90 @@ for sub_id in unique_ids:
         
         
         #append the reference heart rate to list_ref
-        list_ref.append(reference_HR)
+        list_ref.append(int(reference_HR))
         
         
+train_data = np.empty(0)#make empty numpy array of size 0
 
-print(list_ref)
+hold_out_data = np.empty(0)#make empty numpy array of size 0
+
+list_data = np.array(list_data)
+
+hold_out_subject = list_sub[0] #for now we’ll hold out the first training subject
+for ind, sub_id in enumerate(list_sub, start = 0):#enumerate the list_sub starting at 0. Look up enumerate function
+  
+    if(sub_id != hold_out_subject):#sub_id is not the same as hold_out_subject) 
+        if(train_data.shape[0] == 0):
+            train_data = list_data[ind]
+        else:
+            train_data = np.vstack((train_data,list_data[ind]))#concatenate numpy array train_data with the list_data at ind
+    
+    else:
+        if(hold_out_data.shape[0] == 0):
+            hold_out_data = list_data[ind]  
+        else:
+            hold_out_data = np.vstack((hold_out_data,list_data[ind]))#concatenate numpy array hold_out_data with list_data at ind
+
+
+# get Gmm data
+gmm_data = np.empty(0)
+
+for i in range(0,10):
+
+
+    gmm = GMM(n_components = 2).fit(train_data.reshape(-1,1))        
+    test_pred = gmm.predict(hold_out_data[i].reshape(-1,1))
+    
+    
+    plt.subplot(5,2,i+1)
+    plt.plot(test_pred)
+    plt.plot(hold_out_data[i])
+    
+    
+    if (gmm_data.shape[0] == 0):
+        gmm_data = np.array(test_pred)
+    else:
+        gmm_data = np.vstack((gmm_data,np.array(test_pred)))
+
+
+#plot the graphs 
+"""for i in range (0,10):
+    plt.title('Subject:', i)
+    plt.subplot(5,2,i+1)
+    plt.plot(hold_out_data[i])
+
+"""
+
+gmm = GMM(n_components = 2).fit(train_data.reshape(-1,1))        
+test_pred = gmm.predict(hold_out_data[0].reshape(-1,1))
+
+plt.plot(test_pred)
+plt.plot(hold_out_data[0])
+
+
+#get heartrate
+heartrate = []
+
+state = 0
+for i in gmm_data:
+    count = 0
+
+    for j in i:
+        if j == 1 and state == 0:
+            count += 1
+            state = 1
+        if state == 1 and j == 0:
+            state = 0
+    heartrate.append((count -1) * 6)
+    
+print("id:",hold_out_subject)
+print("cacluated" ,heartrate)
+print("reference" ,list_ref[0:10])
+#np.savetxt('heart.csv', heartrate, delimiter = ',')
+
+
+
+    
+    
+    
+    

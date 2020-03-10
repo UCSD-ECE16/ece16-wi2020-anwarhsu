@@ -61,7 +61,7 @@ void sendData(){
             Serial.print(",");
             Serial.print(accelZ_Val);
             Serial.print(",");
-            Serial.println(-1 * HR_Data);
+            Serial.println(HR_Data);
             
         }
     }

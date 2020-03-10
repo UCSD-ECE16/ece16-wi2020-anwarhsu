@@ -42,5 +42,3 @@ class Data:
         print(sampling_rate)
         # return (1000000 / mean[0]) 
         return sampling_rate
-
-

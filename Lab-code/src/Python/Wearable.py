@@ -1,13 +1,8 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Feb 23 20:59:35 2020
-
-@author: Anwar
-"""
 from Libraries.Connection import Connection
 from Libraries.Visualize import Visualize
 from Libraries.Data import Data
-from Libraries.Heartrate import Heartrate
+#from Libraries.Heartrate import Heartrate
+from Libraries.ML import ML
 import numpy as np
 
 
@@ -18,7 +13,6 @@ class Wearable:
         self.connection = Connection('COM4', 115200 )
         self.serial_name = serial_name
         self.baud_rate = baud_rate
-       
         
         
     
@@ -58,11 +52,11 @@ class Wearable:
             
 
 def main():
-    wearable = Wearable('COM4',115200)
-    wearable.main()
-
+    #wearable = Wearable('COM4',115200)
+    #wearable.main()
+    
+    self.ML.train_hr_model(r'C:\Users\Anwar\Documents\ECE16\ece16-wi2020-anwarhsu\Lab-code\src\Python\directory\traning_set\*.csv')
+    print(self.hi)
 
 if __name__== "__main__":
     main()
-
-
