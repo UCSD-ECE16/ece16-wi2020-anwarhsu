@@ -244,8 +244,8 @@ heartrate = freq10 * 60
 print("heartrate10:", heartrate)"""
 
 
-gnd = np.array([75, 74, 73, 74, 80, 82, 87, 90 ,98, 69]) #reference heart rate
-est = np.array([72, 66, 72, 72, 90, 54, 102, 108, 90, 72]) #estimate of your algorithm
+gnd = np.array([71, 104, 92, 66, 85, 67, 70, 67 ,65, 90]) #reference heart rate
+est = np.array([78, 120, 102, 60, 96, 60, 78, 60, 54, 90]) #estimate of your algorithm
 
 
 [R,p] = pearsonr(gnd,est)

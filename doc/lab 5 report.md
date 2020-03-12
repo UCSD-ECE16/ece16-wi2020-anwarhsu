@@ -73,7 +73,9 @@ Date: 02/29/2020
 
 ## Challenges
 
+
 ### Challenge 1:
+We are going to compare different results of how a filter can effect the frquency domain
 
 > ![Image of challenge_1](images5/Challenge_one_graph.jpg)
 
@@ -85,6 +87,7 @@ Date: 02/29/2020
 > A. I would change the btype = 'high'. Similar to high pass filter would be filting out the baseline drifting because it would remove the low frequncy signals. 
 
 ### Challenge 2: What is the Frequency Content of the PPG
+We are trying to find what the frequency is in our data set from lab 4
 
 > ![Image of challenge_1](images5/Challenge_two_graph.jpg)
 
@@ -104,6 +107,7 @@ Date: 02/29/2020
 > A. My sampling rate from last lab(unknown eroors) and data from lab 4 has too much noise. This has resulted in some of the resuslts as showsn by the 3.7 freq to be shown. These are the errors the the feequency domain holds. 
 
 ### Challenge 3: Calculate Heart Rate with Frequency Domain Features
+We are using the idea of frquency domain and will compute an alg that would gives us the bpm
 
 > ![Image of challenge_1](images5/challenge_3_code.jpg)
 
@@ -128,6 +132,7 @@ Date: 02/29/2020
 > A. Trial = 01 
 
 ### Challenge 4: Data for ML
+We are trying to get a large data set from a directory and implement a filter for our GMM model to analyze in the next challenge 
 
 > Q. According to the lecture, what is the recommended split between training and testing on a small dataset? 
 
@@ -150,19 +155,38 @@ Date: 02/29/2020
 >![image of list_data](images5/challenge_4_ref.jpg)
 
 ### Challenge 5:
+We are using a GMM model to traing data and predict threhold values for a heartbeat
 
 > Q. What is the difference between leave-one-out validation and leave-one-subject-out validation? Which are we doing and why is this important, and why would it be an issue if we used the other validation method given what we are building? 
 
 > leave-one-out validation would be training all but one and cycling through all. leave one subject out splits the data into groups and leaves one group out then cycles through these groups. The purpose of this lab is for our heartrate sensor to work with different types of people. So we need to split our data into groups. This will allow the machine to train data given groups. 
 
+> Image of what our Gmm predicted(blue graph)
 > ![image of gmm graph](images5/challenge_5_gmm_graph.JPG)
 
+> Proof of working model for all 10 cases for each hold out subject.
 > ![image of gmm graph](images5/challenge_5_bestgraph.JPG)
 
+>Example of heartrate caculation 
 > ![image of gmm graph](images5/challenge_5_outputs.JPG)
 
+> Example of nonperfect caculation(graph sown below)
 > ![image of gmm graph](images5/challenge_5_flawoutput.JPG)
 
+> Large amount of noise so our GMM model is having a hard trouble predictiing threshold values. This could be fix with better data set because subject 05 id has bad data.
 > ![image of gmm graph](images5/challenge_5_flawgraph.JPG)
 
 ### Challenge 6
+We are implmenting our last challenge into an organize OOP style. We then will anayzle our test case to see if this is an accurate mdoel
+
+> Example of testing the first 2 function in the ML class
+> ![image of gmm graph](images5/challenge_6_working.JPG)
+
+> Working solution of test case and heartrate outputs
+> ![image of gmm graph](images5/challenge_6_working_test.JPG)
+
+> Graph of all 10 cases for the first subject in the test case
+> ![image of gmm graph](images5/challenge_6_working_graph.JPG)
+
+> As we can see the R value is 0.96 which shows that this GMM model is a good method in finding thresholds and thus allows us to get 
+> ![image of gmm graph](images5/challenge_6_bland.JPG) 

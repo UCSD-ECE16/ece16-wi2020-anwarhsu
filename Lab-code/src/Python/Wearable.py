@@ -6,7 +6,6 @@ from Libraries.ML import ML
 import numpy as np
 
 
-
 class Wearable:
     def __init__(self, serial_name, baud_rate):
         self.data = Data()
@@ -54,9 +53,10 @@ class Wearable:
 def main():
     #wearable = Wearable('COM4',115200)
     #wearable.main()
-    
-    self.ML.train_hr_model(r'C:\Users\Anwar\Documents\ECE16\ece16-wi2020-anwarhsu\Lab-code\src\Python\directory\traning_set\*.csv')
-    print(self.hi)
-
+    ml = ML()
+    ml.train_hr_model(directory = r'C:\Users\Anwar\Documents\ECE16\ece16-wi2020-anwarhsu\Lab-code\src\Python\directory\traning_set\*.csv')
+    ml.test_hr_model(directory = r'C:\Users\Anwar\Documents\ECE16\ece16-wi2020-anwarhsu\Lab-code\src\Python\directory\Test_set\*.csv')
+    ml.calc_hr()
 if __name__== "__main__":
+
     main()
