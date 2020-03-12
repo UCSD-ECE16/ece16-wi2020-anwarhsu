@@ -91,7 +91,7 @@ We are trying to find what the frequency is in our data set from lab 4
 
 > ![Image of challenge_1](images5/Challenge_two_graph.jpg)
 
-> ![Image of challenge_1](images5/Challenge_2_freq.JPG)
+> ![Image of challenge_1](images5/challenge_2_freq.JPG)
 
 
 > Q. How does the dominant frequency change with regards to the heart rate?
