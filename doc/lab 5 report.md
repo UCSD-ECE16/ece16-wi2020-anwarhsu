@@ -11,7 +11,7 @@ Date: 02/29/2020
 
 > A. Accuracy = RMSE, Precision = STD, Bias = Bias, Correlation = R 
 >
-> ![Image of sample_5](images5/tutorial_graph.jpg)
+> ![Image of sample_5](images5/tutorial_graph.JPG)
 
 > Q. Using the above code, plot the correlation and bland-altman plot of your lab 4 HR estimation vs the reference. What is your R value, bias, and 95% limits of agreement
 
@@ -48,28 +48,28 @@ Date: 02/29/2020
 > Q. How does your detrend function modify the frequency content of the signal? Show the plot and circle the part that is most modified and explain why.
 
 > A. Its still the same frequency gprah because the detrend fucntion only moves the baseline to zero. However our DC value changes becuase detrend creates a new baseline. This is why we see a differenct DC value as shown by the circles. 
-> ![Image of sample_5](images5/detrend.jpg)
+> ![Image of sample_5](images5/detrend.JPG)
 
 ### Dominant Frequency Component:
 
 > Q. Show the code - Use np.argmax to find the actual dominant frequency of the x acceleration (currently labeled as 1Hz in the above plot). The aim here is to use argmax to get the index of the maximum value of Pxx and then use that index to get the corresponding frequency in the Freqs array. Try this with and without removing the DC offset. What do you get?
 
 > A. If I don't remove the DC offset, it gives me index 0 because the maxium is at zero when it starts. In last Tutorial, the first graph shows with the dc offset which shows it initaliy is peaking. In the second graph we can see it gradually peaking and thus, we get the maxium frequncy was 1.8. This make sense becuase in the second graph, we can see the highest peak around 1.8 as shwon by the drawn circle. 
-> ![Image of sample_5](images5/np.argmax.jpg)
-> ![Image of sample_5](images5/np.argmax_output.jpg)
+> ![Image of sample_5](images5/np.argmax.JPG)
+> ![Image of sample_5](images5/np.argmax_output.JPG)
 
 > Q. If we don’t remove the DC offset first, how can we index Pxx such that when we calculate argmax, we don’t look at the Pxx[0] (skipping the 0 index).
 
 > A. Index one still gives us the inital 0 frequency as maxium so I went from 2 and beyond. 
-> ![Image of sample_5](images5/np.argmax_dc.jpg)
+> ![Image of sample_5](images5/np.argmax_dc.JPG)
 
 > Q. What is the dominant frequency for the y and z acceleration in the sample?
 
 > A. I used the same idea as the last quesiton and found that the maxium frquency for y = 2 and z = 2
 > 
-> ![Image of sample_5](images5/dom_y_code.jpg)
-> ![Image of sample_5](images5/dom_y_freq.jpg)
-> ![Image of sample_5](images5/dom_z_freq.jpg)
+> ![Image of sample_5](images5/dom_y_code.JPG)
+> ![Image of sample_5](images5/dom_y_freq.JPG)
+> ![Image of sample_5](images5/dom_z_freq.JPG)
 
 ## Challenges
 
@@ -79,7 +79,7 @@ We are going to compare different results of how a filter can effect the frquenc
 
 > ![Image of challenge_1](images5/Challenge_one_graph.jpg)
 
-> ![Image of challenge_1](images5/Challenge_one_code.jpg)
+> ![Image of challenge_1](images5/Challenge_one_code.JPG)
  
 
 > Q. Looking at the documentation for signal.butter, how would you make a high pass filter with a cut off of 0.8Hz? Of the previous time based filters in Lab 4, which filter is most like the high pass filter?
@@ -91,7 +91,7 @@ We are trying to find what the frequency is in our data set from lab 4
 
 > ![Image of challenge_1](images5/Challenge_two_graph.jpg)
 
-> ![Image of challenge_1](images5/Challenge_2_freq.jpg)
+> ![Image of challenge_1](images5/Challenge_2_freq.JPG)
 
 
 > Q. How does the dominant frequency change with regards to the heart rate?
@@ -109,9 +109,9 @@ We are trying to find what the frequency is in our data set from lab 4
 ### Challenge 3: Calculate Heart Rate with Frequency Domain Features
 We are using the idea of frquency domain and will compute an alg that would gives us the bpm
 
-> ![Image of challenge_1](images5/challenge_3_code.jpg)
+> ![Image of challenge_1](images5/challenge_3_code.JPG)
 
-> ![Image of challenge_1](images5/challenge_3_output.jpg)
+> ![Image of challenge_1](images5/challenge_3_output.JPG)
 
 > Q. What are some failure modes of your frequency domain solution? 
 
@@ -121,7 +121,7 @@ We are using the idea of frquency domain and will compute an alg that would give
 
 > Compared to the time domain graph. The frequency graph gives us a better r value .63 compared to .33. It seams that the frquency domain graph is better at getting in the general region(percision) however, for the time domain graph with the percise points, it gives us a more accurate result. 
 
-> ![Image of challenge_1](images5/challenge_3_graph.jpg)
+> ![Image of challenge_1](images5/challenge_3_graph.JPG)
 
 ## Tutorial part 2
 
@@ -148,11 +148,11 @@ We are trying to get a large data set from a directory and implement a filter fo
 > A. We splitting by subjects because we want our alg to be able to read our heartrate correctly. For our testing set, we want it to correctly read a completely new subject heartrate thus we need to be able to read through subjests. 
 
 > The image below shows the output of a data set where theres a spike and it goes down to its baseline. The data is normalized. 
->![image of list_data](images5/challenge_4_data_output.jpg)
+>![image of list_data](images5/challenge_4_data_output.JPG)
 
->![image of list_data](images5/challenge_4_sub_id.jpg)
+>![image of list_data](images5/challenge_4_sub_id.JPG)
  
->![image of list_data](images5/challenge_4_ref.jpg)
+>![image of list_data](images5/challenge_4_ref.JPG)
 
 ### Challenge 5:
 We are using a GMM model to traing data and predict threhold values for a heartbeat
