@@ -84,13 +84,15 @@ void Lab3(){
   
 }
 
-
-
+void Grand_challenge(){
+readADC();
+  if (detectTap()){
+      Serial.println("A tap has been detected");
+      delay(100);
+  }
+}
 void loop() {
-
-receiveMessage();
-readHR();
-sendData();
+Grand_challenge();
 }
     
     

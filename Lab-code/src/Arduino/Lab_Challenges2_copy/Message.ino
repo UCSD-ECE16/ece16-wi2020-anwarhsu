@@ -12,7 +12,7 @@ int in_text_index = 0;
 
 void setupMessage(){
   // Serial begin at 9600 
-  Serial.begin(115200 );
+  Serial.begin(9600);
 }
 
 void printTime(int integer_to_print){

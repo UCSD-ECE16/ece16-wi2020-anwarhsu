@@ -26,11 +26,14 @@ void printADC(){ //print the ADC values
   Serial.print("Z:");
   Serial.print(accelZ_Val);
   Serial.print(",");
-  Serial.print("Y:");
-  Serial.print(accelY_Val);
-  Serial.print(",");
-  Serial.print("X:");
-  Serial.print(accelX_Val);
+  //Serial.print("Y:");
+  //Serial.print(accelY_Val);
+  //Serial.print(",");
+  //Serial.print("X:");
+  //Serial.print(accelX_Val);
+  Serial.print(2225);
+
+  
   Serial.println(",");
  
   
