@@ -16,7 +16,7 @@ bool detectTap(){
   
   bool tap_detected = false; // first set to false
   
-  if ( accelZ_Val > 2000 ){
+  if ( accelZ_Val > 1600 ){
   
     if(accelZ_Val > threshZ ){
       tap_detected = true; //if the accel values meet the rule, set to true

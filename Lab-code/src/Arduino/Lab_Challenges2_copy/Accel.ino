@@ -32,7 +32,7 @@ void printADC(){ //print the ADC values
   //Serial.print("X:");
   //Serial.print(accelX_Val);
   Serial.print(2225);
-
+  //Serial.print(2050);
   
   Serial.println(",");
  

@@ -86,6 +86,7 @@ void Lab3(){
 
 void Grand_challenge(){
 readADC();
+//printADC();
   if (detectTap()){
       Serial.println("A tap has been detected");
       delay(100);
