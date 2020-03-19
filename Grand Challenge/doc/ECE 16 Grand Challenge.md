@@ -41,13 +41,13 @@ I will be exploring the challenge on where our tap detection algorithm wouldn't 
 > Solution: I use a similar idea as checking for taps for the upwards orientation for the downwards orientation. I first check too see what orientation the accelerometer is at. Knowing that the baseline dc value changes depending on orientation. I have determine if the dc value range from 2200 for the z axis its facing upwards and if the dc value is aroud 1400 then its facing downards. Once my code understands what orientation my accelerometer is at. I had respected threshold values based on what orientation state its at. Once I tap regardless of orientation, once the peak reaches pass the threshold value it, the machine detects the tap and I have printed on my serial monitor "A tap has been detected" to prove that it works(can't use OLED screen since my breadboard is facing downards and you cant see it). 
 
 >![Image of sample_5](images/upwards_working.JPG)
-> This is a close up shot of what the upwards orinetation would look like once a peak passes the threshold. 
+> This is a close up shot of what the upwards orientation would look like once a peak passes the threshold. 
 
->![Image of sample_5](videos/upwards.GIF)
-> Working proof of upwpards orinetation
+>![Image of sample_5](videos/upwards.gif)
+> Working proof of upwpards orientation
 
->![Image of sample_5](videos/downards.GIF)
-> Working proof of downards orinetation
+>![Image of sample_5](videos/downards.gif)
+> Working proof of downards orientation
 
 ### Demo 
 https://www.youtube.com/watch?v=ROuRpKwhj7E
